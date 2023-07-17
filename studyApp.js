@@ -133,3 +133,42 @@ const newInfoBook = { ...books[0], myReview: 4.9 };
 
 //REST
 const sumOfUnknownAmountNums = (...nums) => nums.reduce((acc, x) => acc + x);
+
+//also can be used as fullName(first, last, ...titles) type
+//Takes first and second as first and last name then everything goes to titles
+
+const [gold, silver, bronze] = movies;
+const [winner, ...others] = movies;
+
+//also for objects
+
+const { title: kitapIsmi } = books[0];
+const { title, ...other } = books[1];
+
+//I have no idea what this is doing
+const [{ title: nameOfBook }, { rating }] = books;
+
+/*function print({ title, rating }) {
+  console.log(`${title}, ${rating}`);
+}*/
+
+const print = ({ title, rating }) => console.log(`${title}, ${rating}`);
+
+const role = "host";
+const person = "Elif Tufan";
+const role2 = "guest";
+const person2 = "Zafer Çalişir";
+const dreamTeam = {
+  [role]: person,
+  [role2]: person2,
+};
+
+const personObj = {
+  first: "Zafer",
+  last: "Calisir",
+  nickName: "Neptune",
+  fullName() {
+    const { first, last, nickName } = this;
+    console.log(`${first} ${last} AKA ${nickName}`);
+  },
+};
