@@ -3,8 +3,8 @@ let ctx = maze.getContext("2d");
 let generationComplete = false;
 
 let current;
-
 let goal;
+
 class Maze {
   constructor(size, rows, columns) {
     this.size = size;
