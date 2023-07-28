@@ -251,3 +251,29 @@ async function getPlanetsTryCatch() {
     console.log(err);
   }
 }
+
+async function get3Pokemon() {
+  //Instead of await this line by line
+  const poke1 = axios.get("https://pokeapi.co/api/v2/pokemon/1");
+  const poke2 = axios.get("https://pokeapi.co/api/v2/pokemon/2");
+  const poke3 = axios.get("https://pokeapi.co/api/v2/pokemon/3");
+
+  //We can do this so that all api calls run parallel
+  /*  const prom1 = await poke2;
+           const prom2 = await poke3;
+           const prom3 = await poke1; */
+
+  //Promise all is resolved when all promises in array is resolved
+  const results = await Promise.all([poke1, poke2, poke3]);
+  console.log(results);
+  printPokemon(results);
+  /*   console.log(prom1.data.name);
+                console.log(prom2.data.name);
+                console.log(prom3.data.name); */
+}
+
+function printPokemon(results) {
+  for (let pokemon of results) {
+    console.log(pokemon.data.name);
+  }
+}
